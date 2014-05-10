@@ -19,9 +19,15 @@ public class MainActivity extends Activity{
 
     public static final String APP_ID = "889673151059bed61a35b1f33f5488a6";
 
-    public static String CURRENT_WEATHER_URL_MAIN = "http://api.openweathermap.org/data/2.5/weather?lat=35&lon=139";
-    public static String THREE_HOUR_FORECAST_URL_MAIN = "http://api.openweathermap.org/data/2.5/forecast?lat=35&lon=139";
+    public static final String CURRENT_WEATHER_URL_MAIN = "http://api.openweathermap.org/data/2.5/weather?lat=35&lon=139";
+    public static final String THREE_HOUR_FORECAST_URL_MAIN = "http://api.openweathermap.org/data/2.5/forecast?lat=35&lon=139";
+    public static final String TEN_DAY_FORECAST_URL_MAIN = "http://api.openweathermap.org/data/2.5/forecast/daily?lat=35&lon=139&cnt=10&mode=json";
+
     public static String CURRENT_WEATHER_URL_MAIN_BREAK1 = "http://api.openweathermap.org/data/2.5/weather?";
+    public static String THREE_HOUR_FORECAST_URL_MAIN_BREAK1 = "http://api.openweathermap.org/data/2.5/forecast?";
+    public static String TEN_DAY_FORECAST_URL_MAIN_BREAK1 = "http://api.openweathermap.org/data/2.5/forecast/daily?";
+    public static String TEN_DAY_FORECAST_URL_MAIN_BREAK2 = "&cnt=10&mode=json";
+
     public static String CURRENT_LAT,CURRENT_LON;
     public static String TEMP_URL;
     public static String FINAL_URL;
