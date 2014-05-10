@@ -17,6 +17,18 @@ public class MainActivity extends Activity{
     Context context;
     public static AppUtils appUtils;
 
+    public static final String APP_ID = "889673151059bed61a35b1f33f5488a6";
+
+    public static String CURRENT_WEATHER_URL_MAIN = "http://api.openweathermap.org/data/2.5/weather?lat=35&lon=139";
+    public static String THREE_HOUR_FORECAST_URL_MAIN = "http://api.openweathermap.org/data/2.5/forecast?lat=35&lon=139";
+    public static String CURRENT_WEATHER_URL_MAIN_BREAK1 = "http://api.openweathermap.org/data/2.5/weather?";
+    public static String CURRENT_LAT,CURRENT_LON;
+    public static String TEMP_URL;
+    public static String FINAL_URL;
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
