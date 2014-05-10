@@ -8,7 +8,8 @@ import android.content.Context;
 public class AppModel {
 
     Context context;
-
+    private Double latitude;
+    private Double longitude;
 
     public AppModel(Context context){
 
@@ -16,4 +17,5 @@ public class AppModel {
         this.context = context;
 
     }
+
 }
