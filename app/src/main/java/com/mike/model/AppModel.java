@@ -67,6 +67,24 @@ public class AppModel {
     private String currentHumidity;
     private String currentWindSpeed;
     private String currentIcon;
+    private String currentSunRise;
+    private String currentSunSet;
+
+    public String getCurrentSunRise() {
+        return currentSunRise;
+    }
+
+    public void setCurrentSunRise(String currentSunRise) {
+        this.currentSunRise = currentSunRise;
+    }
+
+    public String getCurrentSunSet() {
+        return currentSunSet;
+    }
+
+    public void setCurrentSunSet(String currentSunSet) {
+        this.currentSunSet = currentSunSet;
+    }
 
     public String getCurrentDescription() {
         return currentDescription;
