@@ -16,6 +16,15 @@ public class AppModel {
     private String currentCity;
     private String currentCountry;
     private String currentZip;
+    private String current_icon_id;
+
+    public String getCurrent_icon_id() {
+        return current_icon_id;
+    }
+
+    public void setCurrent_icon_id(String current_icon_id) {
+        this.current_icon_id = current_icon_id;
+    }
 
     public Double getLatitude() {
         return latitude;
@@ -69,6 +78,15 @@ public class AppModel {
     private String currentIcon;
     private String currentSunRise;
     private String currentSunSet;
+    private String currentPressure;
+
+    public String getCurrentPressure() {
+        return currentPressure;
+    }
+
+    public void setCurrentPressure(String currentPressure) {
+        this.currentPressure = currentPressure;
+    }
 
     public String getCurrentSunRise() {
         return currentSunRise;
@@ -153,7 +171,16 @@ public class AppModel {
     private String hourlyHumidity;
     private String hourlyWindSpeed;
     private String hourlyTime;
+    private String hourlyPressure;
     private String hourlyIcon;
+
+    public String getHourlyPressure() {
+        return hourlyPressure;
+    }
+
+    public void setHourlyPressure(String hourlyPressure) {
+        this.hourlyPressure = hourlyPressure;
+    }
 
     public String getHourlyWeatherDescription() {
         return hourlyWeatherDescription;
@@ -323,6 +350,11 @@ public class AppModel {
         super();
         this.context = context;
 
+    }
+
+    public AppModel(String someString){
+        super();
+        this.hourlyTime = someString;
     }
 
 }

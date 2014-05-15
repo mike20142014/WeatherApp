@@ -157,7 +157,7 @@ public class LazyImageLoadAdapter extends BaseAdapter implements OnClickListener
 
         @Override
         public void onClick(View arg0) {
-            //MainActivity sct = (MainActivity)activity;
+            //CurrentActivity sct = (CurrentActivity)activity;
             //sct.onItemClick(mPosition);
         }
     }
