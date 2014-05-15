@@ -1,8 +1,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     tools:context="com.mike.app.MainActivity"
     tools:ignore="MergeRootFrame"
     android:background="#333"
@@ -12,23 +12,26 @@
 
         android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="#333">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/rectangular_stroke">
 
                 <ImageView
                     android:layout_width="127dp"
                     android:layout_height="127dp"
-                    android:id="@+id/weather_imageView"
+                    android:id="@+id/current_weather_imageView"
                     android:layout_gravity="left|top"
                     android:src="@drawable/circleimg" />
 
@@ -61,9 +64,9 @@
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:text="Text"
-                            android:textColor="#ffeeeeea"
+                            android:textColor="#ff1a98f6"
                             android:textStyle="bold"
-                            android:id="@+id/current_tempTextView" />
+                            android:id="@+id/current_high_tempTextView" />
 
                     </LinearLayout>
 
@@ -86,9 +89,9 @@
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:text="Text"
-                            android:textColor="#ffeeeeea"
+                            android:textColor="#ff1a98f6"
                             android:textStyle="bold"
-                            android:id="@+id/current_min_textView" />
+                            android:id="@+id/current_min_tempTextView" />
 
                     </LinearLayout>
 
@@ -111,9 +114,9 @@
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceMedium"
                             android:text="Text"
-                            android:textColor="#ffeeeeea"
+                            android:textColor="#ff1a98f6"
                             android:textStyle="bold"
-                            android:id="@+id/current_min_textView" />
+                            android:id="@+id/current_pressureTextView" />
 
                     </LinearLayout>
                 </LinearLayout>
@@ -123,6 +126,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="3dp"
                 android:background="#DDDDDD"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="5dp"
                 android:id="@+id/someView"></View>
 
 
@@ -131,7 +136,9 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:paddingLeft="10dp"
+                android:background="@drawable/rectangular_stroke"
                 android:paddingTop="10dp"
+                android:layout_marginLeft="10dp"
                 android:id="@+id/otherLayout">
 
                 <TextView
@@ -147,9 +154,9 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="some description"
-                    android:textColor="#ffeeeeea"
+                    android:textColor="#ff1a98f6"
                     android:textStyle="bold"
-                    android:id="@+id/current_min_textView" />
+                    android:id="@+id/current_description_TextView" />
 
             </LinearLayout>
 
@@ -168,6 +175,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginTop="10dp"
+                android:background="@drawable/rectangular_stroke"
                 android:layout_marginLeft="10dp">
 
                 <LinearLayout
@@ -189,13 +197,14 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:text="Sunset "
+                        android:layout_marginTop="28dp"
                         android:textColor="#ffeeeeea"
                         android:id="@+id/textView" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="1dp"
-                    android:layout_height="50dp"
+                    android:layout_height="100dp"
                     android:background="#DDDDDD"
                     android:layout_marginLeft="10dp">
 
@@ -212,26 +221,28 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:text="riseDesc"
-                        android:textColor="#ffeeeeea"
-                        android:id="@+id/textView" />
+                        android:textColor="#ff1a98f6"
+                        android:id="@+id/current_sunrise_TextView" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:text="setDesc"
-                        android:textColor="#ffeeeeea"
-                        android:id="@+id/textView" />
+                        android:layout_marginTop="10dp"
+                        android:textColor="#ffe6000e"
+                        android:id="@+id/current_sunset_TextView" />
                 </LinearLayout>
 
-            </LinearLayout>
+            </LinearLayout>[
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp">
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/rectangular_stroke">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -276,16 +287,16 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:text="windDesc"
-                        android:textColor="#ffeeeeea"
-                        android:id="@+id/textView" />
+                        android:textColor="#ff1a98f6"
+                        android:id="@+id/current_windspeed_TextView" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:text="humidityDesc"
-                        android:textColor="#ffeeeeea"
-                        android:id="@+id/textView" />
+                        android:textColor="#ff1a98f6"
+                        android:id="@+id/current_humidity_TextView" />
 
                 </LinearLayout>
 

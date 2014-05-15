@@ -10,10 +10,13 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mike.com.mike.adapters.MyPagerAdapter;
 import com.mike.com.mike.adapters.ViewPagerAdapter;
+import com.mike.imagedownloadutil.ImageLoader;
 import com.mike.model.AppModel;
 import com.mike.utils.AppUtils;
 
@@ -29,6 +32,8 @@ public class CurrentActivity extends Activity {
     Context context;
     public static AppUtils appUtils;
     public static AppModel appModel;
+    public ImageLoader imageLoader;
+
 
     public static final String APP_ID = "889673151059bed61a35b1f33f5488a6";
 
@@ -60,17 +65,58 @@ public class CurrentActivity extends Activity {
     public MyPagerAdapter myPagerAdapter;
     public ViewPager hourlyPager;
 
+    TextView current_highTemp_textView;
+    TextView current_lowTemp_textView;
+    TextView current_pressure_textView;
+    TextView current_description_textView;
+    TextView current_sunrise_textView;
+    TextView current_sunset_textView;
+    TextView current_humidity_textView;
+    TextView current_windspeed_textView;
+    ImageView current_Weather_imageview;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.current_activity_main);
         context = this;
+        init();
         appUtils = new AppUtils(context);
         appModel = new AppModel(context);
+        imageLoader = new ImageLoader(context);
         //getMyLocation();
-        hourlyPager = (ViewPager)findViewById(R.id.hourly_forecast_pager);
 
-        new BackgroundTask(context, THREE_HOUR_FORECAST_URL_MAIN).execute();
+        new BackgroundTask(context,CURRENT_WEATHER_URL_MAIN,THREE_HOUR_FORECAST_URL_MAIN).execute();
+
+    }
+
+    public void init(){
+
+        hourlyPager = (ViewPager)findViewById(R.id.hourly_forecast_pager);
+        current_Weather_imageview = (ImageView)findViewById(R.id.current_weather_imageView);
+        current_highTemp_textView = (TextView)findViewById(R.id.current_high_tempTextView);
+        current_lowTemp_textView = (TextView)findViewById(R.id.current_min_tempTextView);
+        current_pressure_textView = (TextView)findViewById(R.id.current_pressureTextView);
+        current_description_textView = (TextView)findViewById(R.id.current_description_TextView);
+        current_sunrise_textView = (TextView)findViewById(R.id.current_sunrise_TextView);
+        current_sunset_textView = (TextView)findViewById(R.id.current_sunset_TextView);
+        current_humidity_textView = (TextView)findViewById(R.id.current_humidity_TextView);
+        current_windspeed_textView = (TextView)findViewById(R.id.current_windspeed_TextView);
+
+    }
+
+    public void setValues(){
+
+        current_highTemp_textView.setText(appModel.getCurrentMaxTemp());
+        current_lowTemp_textView.setText(appModel.getCurrentMinTemp());
+        current_pressure_textView.setText(appModel.getCurrentPressure());
+        current_description_textView.setText(appModel.getCurrentDescription());
+        current_sunrise_textView.setText(appModel.getCurrentSunRise());
+        current_sunset_textView.setText(appModel.getCurrentSunSet());
+        current_humidity_textView.setText(appModel.getCurrentHumidity());
+        current_windspeed_textView.setText(appModel.getCurrentWindSpeed());
+        imageLoader.DisplayImage(appModel.getCurrentIcon(),R.drawable.circleimg,current_Weather_imageview);
 
     }
 
@@ -78,13 +124,15 @@ public class CurrentActivity extends Activity {
 
         ProgressDialog pDialog;
         Context AsyncContext;
-        String someURL;
+        String currentURL;
+        String hourlyURL;
 
-        public BackgroundTask(Context context1, String SOME_URL) {
+        public BackgroundTask(Context context1, String CURRENT_SOME_URL, String HOURLY_SOME_URL) {
 
             super();
             this.AsyncContext = context1;
-            this.someURL = SOME_URL;
+            this.currentURL = CURRENT_SOME_URL;
+            this.hourlyURL = HOURLY_SOME_URL;
 
         }
 
@@ -103,8 +151,8 @@ public class CurrentActivity extends Activity {
         @Override
         protected Void doInBackground(Void... params) {
 
-            //getCurrentWeather(someURL);
-            getHourlyForecast(someURL);
+            getCurrentWeather(currentURL);
+            getHourlyForecast(hourlyURL);
             /*if (appUtils.isOnline()) {
 
                 *//**
@@ -147,7 +195,7 @@ public class CurrentActivity extends Activity {
 
             myPagerAdapter = new MyPagerAdapter(context,timeArrayData,weatherImageArrayData,descriptionArrayData,maxTempArrayData,minTempArrayData,pressureArrayData,humidityArrayData,windArrayData);
             hourlyPager.setAdapter(myPagerAdapter);
-
+            setValues();
             pDialog.dismiss();
         }
     }
@@ -375,17 +423,24 @@ public class CurrentActivity extends Activity {
                 if (mainTempJSONObject != null) {
                     String temp = mainTempJSONObject.getString("temp");
                     String temp_min = mainTempJSONObject.getString("temp_min");
-                    Double Double_temp_min = Double.valueOf(mainTempJSONObject.getString("temp_min"));
-                    Double convertedTemp = Double_temp_min - 273.150;
-                    long result_value = Math.round(convertedTemp);
+                    Double Double_temp_min = Double.valueOf(temp_min);
+                    Double converted_MIN_Temp = Double_temp_min - 273.150;
+                    long result_min_value = Math.round(converted_MIN_Temp);
+                    appModel.setCurrentMinTemp(String.valueOf(result_min_value) + " °C ");
+
                     String temp_max = mainTempJSONObject.getString("temp_max");
+                    Double Double_temp_max = Double.valueOf(temp_max);
+                    Double converted_Max_Temp = Double_temp_max - 273.150;
+                    long result_max_value = Math.round(converted_Max_Temp);
+                    appModel.setCurrentMaxTemp(String.valueOf(result_max_value) + " °C ");
+
                     String pressure = mainTempJSONObject.getString("pressure");//in hPa
+                    appModel.setCurrentPressure(pressure + " hPa ");
+
                     String humidity = mainTempJSONObject.getString("humidity");//In percentage
+                    appModel.setCurrentHumidity(humidity + " % ");
 
-                    appModel.setCurrentHumidity(humidity+"%");
-                    appModel.setCurrentPressure(pressure+"hPa");
-
-                    Log.d("Main Data : " + "\n", String.valueOf(Double_temp_min) + "\n" + String.valueOf(convertedTemp) + "\n" + String.valueOf(result_value) + "\n" + temp + "\n" + temp_min + "\n" + temp_max + "\n" + pressure + "\n" + humidity);
+                    /*Log.d("Main Data : " + "\n", String.valueOf(Double_temp_min) + "\n" + String.valueOf(convertedTemp) + "\n" + String.valueOf(result_value) + "\n" + temp + "\n" + temp_min + "\n" + temp_max + "\n" + pressure + "\n" + humidity);*/
 
                 }
 
@@ -394,8 +449,11 @@ public class CurrentActivity extends Activity {
                  */
                 JSONObject windJSONObject = mainJsonObject.getJSONObject("wind");
                 if (windJSONObject != null) {
+
                     String windSpeed = windJSONObject.getString("speed");//In mph
+                    appModel.setCurrentWindSpeed(windSpeed + "mps");
                     Log.d("Main Data : ",windSpeed);
+
                 }
 
             } catch (Exception e) {
