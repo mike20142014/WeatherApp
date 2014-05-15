@@ -37,6 +37,7 @@
             android:id="@+id/hourly_item_weatherIcon_ImageView"
             android:layout_gravity="left|top"
             android:layout_marginTop="10dp"
+            android:background="@drawable/oval_shape"
             android:src="@drawable/circleimg" />
 
         <LinearLayout

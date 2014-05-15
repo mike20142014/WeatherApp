@@ -17,7 +17,8 @@
         android:debuggable="true">
         <activity
             android:name="com.mike.app.TabsActivity"
-            android:label="@string/app_name">
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,8 +26,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".CurrentActivity"></activity>
-        <activity android:name=".WeatherActivity"></activity>
+        <activity android:name=".CurrentActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".WeatherActivity" android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

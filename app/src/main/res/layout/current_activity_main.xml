@@ -26,14 +26,15 @@
                 android:orientation="horizontal"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
-                android:background="@drawable/rectangular_stroke">
+                >
 
                 <ImageView
                     android:layout_width="127dp"
                     android:layout_height="127dp"
                     android:id="@+id/current_weather_imageView"
                     android:layout_gravity="left|top"
-                    android:src="@drawable/circleimg" />
+                    android:src="@drawable/circleimg"
+                    android:background="@drawable/oval_shape"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -136,7 +137,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:paddingLeft="10dp"
-                android:background="@drawable/rectangular_stroke"
+                
                 android:paddingTop="10dp"
                 android:layout_marginLeft="10dp"
                 android:id="@+id/otherLayout">
@@ -175,7 +176,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/rectangular_stroke"
+                
                 android:layout_marginLeft="10dp">
 
                 <LinearLayout
@@ -230,7 +231,7 @@
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:text="setDesc"
                         android:layout_marginTop="10dp"
-                        android:textColor="#ffe6000e"
+                        android:textColor="#ff1a98f6"
                         android:id="@+id/current_sunset_TextView" />
                 </LinearLayout>
 
@@ -242,7 +243,7 @@
                 android:orientation="horizontal"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
-                android:background="@drawable/rectangular_stroke">
+                >
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -331,7 +332,7 @@
                     android:id="@+id/hourly_forecast_pager"
                     android:layout_width="match_parent"
                     android:layout_height="300dp"
-                    android:background="@drawable/rectangular_stroke"
+                    
                     android:layout_marginBottom="10dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="10dp"
