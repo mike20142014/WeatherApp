@@ -93,12 +93,12 @@ public class MyPagerAdapter extends PagerAdapter {
             imageLoader.DisplayImage(weatherImageArrayData.get(position),R.drawable.circleimg,weatherIcon);
             timeTextView.setText(timeArrayData.get(position).getHourlyTime());
             //maxTempTextView.setText(maxTempArrayData.get(position).getHourlyMaxTemp());
-            maxTempTextView.setText(maxTempArrayData.get(position).getHourlyTime());
-            minTempTextView.setText(minTempArrayData.get(position).getHourlyTime());
-            pressureTextView.setText(pressureArrayData.get(position).getHourlyTime());
-            humidityTextView.setText(humidityArrayData.get(position).getHourlyTime());
+            maxTempTextView.setText(maxTempArrayData.get(position).getHourlyTime() + " °C ");
+            minTempTextView.setText(minTempArrayData.get(position).getHourlyTime() + " °C ");
+            pressureTextView.setText(pressureArrayData.get(position).getHourlyTime() + " hPa");
+            humidityTextView.setText(humidityArrayData.get(position).getHourlyTime() + "%");
             descriptionTextView.setText(descriptionArrayData.get(position).getHourlyTime());
-            windSpeedTextView.setText(windArrayData.get(position).getHourlyTime());
+            windSpeedTextView.setText(windArrayData.get(position).getHourlyTime() + " mps");
 
         }catch (Exception e){
 

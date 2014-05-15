@@ -305,11 +305,12 @@
                 android:layout_marginTop="10dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="3 Hour Forecast"
+                    android:text="Hourly Forecast"
                     android:textStyle="bold"
+                    android:gravity="center"
                     android:layout_marginLeft="10dp"
                     android:textColor="#ffeeeeea"
                     android:id="@+id/textView" />
@@ -318,7 +319,7 @@
                 <android.support.v4.view.ViewPager
                     android:id="@+id/hourly_forecast_pager"
                     android:layout_width="match_parent"
-                    android:layout_height="250dp"
+                    android:layout_height="300dp"
                     android:background="@drawable/rectangular_stroke"
                     android:layout_marginBottom="10dp"
                     android:layout_marginTop="5dp"

@@ -219,13 +219,20 @@ public class CurrentActivity extends Activity {
 
                             if(weatherMainObject!=null){
 
+
                                 String tempMax = weatherMainObject.getString("temp_max");
-                                appModel.setHourlyMaxTemp(tempMax);
+                                Double Double_temp_max = Double.valueOf(tempMax);
+                                Double convertedTemp_MAX = Double_temp_max- 273.150;
+                                long result_value_temp_max = Math.round(convertedTemp_MAX);
+                                appModel.setHourlyMaxTemp(String.valueOf(result_value_temp_max));
                                 maxTempArrayData.add(new AppModel(appModel.getHourlyMaxTemp()));
                                 Log.d("Weather Data : ", String.valueOf(appModel.getHourlyMaxTemp()));
 
                                 String tempMin = weatherMainObject.getString("temp_min");
-                                appModel.setHourlyMinTemp(tempMin);
+                                Double Double_temp_min = Double.valueOf(tempMin);
+                                Double convertedTemp_MIN = Double_temp_min -273.150;
+                                long result_value_temp_min = Math.round(convertedTemp_MIN);
+                                appModel.setHourlyMinTemp(String.valueOf(result_value_temp_min));
                                 minTempArrayData.add(new AppModel(appModel.getHourlyMinTemp()));
                                 Log.d("Weather Data : ",String.valueOf(appModel.getHourlyMinTemp()));
 
